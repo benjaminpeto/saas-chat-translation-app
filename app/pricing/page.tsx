@@ -1,3 +1,6 @@
+import PricingCards from "@/components/PricingCards";
+import RadialGradientSVG from "@/components/RadialGradientSVG";
+
 function PricingPage() {
 	return (
 		<div className="isolate overflow-hidden bg-gray-900">
@@ -18,29 +21,14 @@ function PricingPage() {
 						We&apos;re 100% sure we have the right plan for you that matches
 						your needs
 					</p>
-					<svg
-						viewBox="0 0 1208 1024"
-						className="absolute -top-10 left-1/2 -z-10 h-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:-top-12 md:-top-20 xl:top-0"
-					>
-						<ellipse
-							cx={604}
-							cy={512}
-							rx={604}
-							ry={512}
-							fill="url(#radial-gradient-pricing)"
-						/>
-						<defs>
-							<radialGradient id="radial-gradient-pricing">
-								<stop stopColor="#7775D6" />
-								<stop stopColor="#E935C1" offset={1} />
-							</radialGradient>
-						</defs>
-					</svg>
+					<RadialGradientSVG />
 				</div>
 			</div>
 
 			<div className="flow-root bg-white pb-24 sm:pb-32">
-				<div className="-mt-80">{/* <PricingCards redirect /> */}</div>
+				<div className="-mt-80">
+					<PricingCards redirect={true} />
+				</div>
 			</div>
 		</div>
 	);
