@@ -4,7 +4,8 @@ export const tiers = [
 		id: "started_ID",
 		href: "#",
 		priceMonthly: null,
-		description: "Get in conversations right away with anyone on any language!",
+		description:
+			"Get in conversations right away with anyone. No more language barriers!",
 		features: [
 			"20 Message Chat limit in Chats",
 			"2 Participant limit in Chats",
@@ -15,7 +16,7 @@ export const tiers = [
 	},
 	{
 		name: "Pro",
-		id: "sdid_fe42ijc0921p90900",
+		id: "pro",
 		href: "#",
 		priceMonthly: "6.99€",
 		description: "Unlock the Full Potential with Pro!",
@@ -23,7 +24,7 @@ export const tiers = [
 			"UNLIMITED Messages in Chats",
 			"UNLIMITED Participant in Chats",
 			"UNLIMITED Chat rooms",
-			"Supports up to 10 languages, and we are growing fast..",
+			"Supports up to 20 languages, and we are growing fast..",
 			"1-hour dedicated support response time",
 			"Early access to NEW Features",
 		],
