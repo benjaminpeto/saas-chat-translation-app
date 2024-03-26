@@ -1,11 +1,12 @@
+import Link from "next/link";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "./Logo";
 import UserButton from "./UserButton";
-import { authOptions } from "@/auth";
-import Link from "next/link";
-import { MessagesSquareIcon } from "lucide-react";
 import CreateChatButton from "./CreateChatButton";
+import UpgradeBanner from "./UpgradeBanner";
+import { MessagesSquareIcon } from "lucide-react";
 
 async function Header() {
 	const session = await getServerSession(authOptions);
@@ -32,7 +33,7 @@ async function Header() {
 					<UserButton session={session} />
 				</div>
 			</nav>
-			{/* Upgrade banner */}
+			<UpgradeBanner />
 		</header>
 	);
 }
