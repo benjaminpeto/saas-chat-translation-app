@@ -5,6 +5,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import UserAvatar from "./UserAvatar";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useLanguageStore } from "@/store/store";
 
 function ChatListRow({ chatId }: { chatId: string }) {
 	const { data: session } = useSession();
@@ -12,6 +13,7 @@ function ChatListRow({ chatId }: { chatId: string }) {
 	const [messages, loading, error] = useCollectionData<Message>(
 		limitedSortedMessagesRef(chatId)
 	);
+	const language = useLanguageStore((state) => state.language);
 
 	function prettyUUID(n = 4) {
 		return chatId.substring(0, n);
@@ -30,17 +32,17 @@ function ChatListRow({ chatId }: { chatId: string }) {
 
 			<div className="flex-1">
 				<p className="font-bold">
-					{!message && "NewChat"}
+					{!message && "New Chat"}
 					{message &&
 						[message?.user.name || session?.user.name].toString().split(" ")[0]}
 				</p>
 
 				<p className="text-gray-400 line-clamp-1">
-					Get the conversation started!
+					{message?.translated?.[language] || "Get the conversation started!"}
 				</p>
 			</div>
 
-			<div className="text-xs text-gray-400 line-clamp-1">
+			<div className="text-xs text-gray-400">
 				<p className="mb-auto">
 					{message
 						? new Date(message.timestamp).toLocaleString()
