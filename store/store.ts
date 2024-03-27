@@ -118,6 +118,33 @@ export const LanguageSupportedMap: Record<LanguagesSupported, string> = {
 	cy: "Welsh",
 };
 
+const LANGUAGES_FOR_FREE = 2;
+
+interface LanguageState {
+	language: LanguagesSupported;
+	setLanguage: (language: LanguagesSupported) => void;
+	getLanguages: (isPro: boolean) => LanguagesSupported[];
+	getNotSupportedLanguages: (isPro: boolean) => LanguagesSupported[];
+}
+
+export const useLanguageStore = create<LanguageState>((set, get) => ({
+	language: "en",
+	setLanguage: (language: LanguagesSupported) => set({ language }),
+	getLanguages: (isPro: boolean) =>
+		isPro
+			? (Object.keys(LanguageSupportedMap) as LanguagesSupported[])
+			: (Object.keys(LanguageSupportedMap).slice(
+					0,
+					LANGUAGES_FOR_FREE
+			  ) as LanguagesSupported[]),
+	getNotSupportedLanguages: (isPro: boolean) =>
+		isPro
+			? []
+			: (Object.keys(LanguageSupportedMap).slice(
+					LANGUAGES_FOR_FREE
+			  ) as LanguagesSupported[]),
+}));
+
 interface SubscriptionState {
 	subscription: Subscription | null | undefined;
 	setSubscription: (subscription: Subscription | null) => void;
