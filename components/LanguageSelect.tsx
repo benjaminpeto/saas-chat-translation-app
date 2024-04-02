@@ -19,7 +19,7 @@ import Link from "next/link";
 function LanguageSelect() {
 	const [language, setLanguage, getLanguages, getNotSupportedLanguages] =
 		useLanguageStore((state) => [
-			state.language,
+			state.languages,
 			state.setLanguage,
 			state.getLanguages,
 			state.getNotSupportedLanguages,

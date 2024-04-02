@@ -121,15 +121,15 @@ export const LanguageSupportedMap: Record<LanguagesSupported, string> = {
 const LANGUAGES_FOR_FREE = 2;
 
 interface LanguageState {
-	language: LanguagesSupported;
-	setLanguage: (language: LanguagesSupported) => void;
+	languages: LanguagesSupported;
+	setLanguage: (languages: LanguagesSupported) => void;
 	getLanguages: (isPro: boolean) => LanguagesSupported[];
 	getNotSupportedLanguages: (isPro: boolean) => LanguagesSupported[];
 }
 
 export const useLanguageStore = create<LanguageState>((set, get) => ({
-	language: "en",
-	setLanguage: (language: LanguagesSupported) => set({ language }),
+	languages: "en",
+	setLanguage: (languages: LanguagesSupported) => set({ languages }),
 	getLanguages: (isPro: boolean) =>
 		isPro
 			? (Object.keys(LanguageSupportedMap) as LanguagesSupported[])
