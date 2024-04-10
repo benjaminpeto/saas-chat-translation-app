@@ -17,7 +17,6 @@ async function ChatPage({ params: { chatId } }: Props) {
 			{/* ChatMembersBadge */}
 			{/* ChatMessages */}
 
-			{/* ChatInput */}
 			<ChatInput chatId={chatId} />
 		</>
 	);

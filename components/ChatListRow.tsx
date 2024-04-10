@@ -13,7 +13,7 @@ function ChatListRow({ chatId }: { chatId: string }) {
 	const [messages, loading, error] = useCollectionData<Message>(
 		limitedSortedMessagesRef(chatId)
 	);
-	const language = useLanguageStore((state) => state.languages);
+	const language = useLanguageStore((state) => state.language);
 
 	function prettyUUID(n = 4) {
 		return chatId.substring(0, n);

@@ -39,7 +39,6 @@ export type LanguagesSupported =
 	| "lb"
 	| "mk"
 	| "mt"
-	| "mh"
 	| "my"
 	| "no"
 	| "ne"
@@ -97,7 +96,6 @@ export const LanguageSupportedMap: Record<LanguagesSupported, string> = {
 	lb: "Luxembourgish",
 	mk: "Macedonian",
 	mt: "Maltese",
-	mh: "Marshallese",
 	my: "Myanmar (Burmese)",
 	no: "Norwegian",
 	ne: "Nepali",
@@ -121,15 +119,15 @@ export const LanguageSupportedMap: Record<LanguagesSupported, string> = {
 const LANGUAGES_FOR_FREE = 2;
 
 interface LanguageState {
-	languages: LanguagesSupported;
-	setLanguage: (languages: LanguagesSupported) => void;
+	language: LanguagesSupported;
+	setLanguage: (language: LanguagesSupported) => void;
 	getLanguages: (isPro: boolean) => LanguagesSupported[];
 	getNotSupportedLanguages: (isPro: boolean) => LanguagesSupported[];
 }
 
 export const useLanguageStore = create<LanguageState>((set, get) => ({
-	languages: "en",
-	setLanguage: (languages: LanguagesSupported) => set({ languages }),
+	language: "en",
+	setLanguage: (language: LanguagesSupported) => set({ language }),
 	getLanguages: (isPro: boolean) =>
 		isPro
 			? (Object.keys(LanguageSupportedMap) as LanguagesSupported[])
