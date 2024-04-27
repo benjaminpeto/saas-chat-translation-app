@@ -9,13 +9,19 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "./ui/dialog";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "./ui/tooltip";
 import { Button } from "./ui/button";
+import { useSubscriptionStore } from "@/store/store";
 import { useToast } from "./ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import useAdminId from "@/hooks/useAdminId";
 import { Trash } from "lucide-react";
-import { set } from "zod";
 
 function DeleteChatButton({ chatId }: { chatId: string }) {
 	const { data: session } = useSession();
@@ -23,6 +29,10 @@ function DeleteChatButton({ chatId }: { chatId: string }) {
 	const { toast } = useToast();
 	const router = useRouter();
 	const adminId = useAdminId({ chatId });
+	const subscription = useSubscriptionStore((state) => state.subscription);
+
+	const isPro =
+		subscription?.role === "pro" && subscription.status === "active";
 
 	const handleDelete = async () => {
 		toast({
@@ -65,10 +75,21 @@ function DeleteChatButton({ chatId }: { chatId: string }) {
 		session?.user.id === adminId && (
 			<Dialog onOpenChange={setOpen} open={open}>
 				<DialogTrigger asChild>
-					<Button variant="destructive">
-						<Trash className="h-4 w-4 mr-2" />
-						Delete Chat
-					</Button>
+					<TooltipProvider delayDuration={250}>
+						<Tooltip>
+							<TooltipTrigger>
+								<Button disabled={!isPro} variant="destructive">
+									<Trash className="h-4 w-4 mr-2" />
+									Delete Chat
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent side="bottom">
+								<p>
+									Only <strong>PRO</strong> users can delete chat
+								</p>
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
 				</DialogTrigger>
 
 				<DialogContent className="sm:max-w-md">

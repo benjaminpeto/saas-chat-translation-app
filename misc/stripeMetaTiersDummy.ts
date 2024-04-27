@@ -23,7 +23,7 @@ export const tiers = [
 			"UNLIMITED Messages in Chats",
 			"UNLIMITED Participant in Chats",
 			"UNLIMITED Chat rooms",
-			"Supports up to 56 languages, and we are growing fast..",
+			"Supports up to 55 languages, and we are growing fast..",
 			"1-hour dedicated support response time",
 			"Early access to NEW Features",
 		],
