@@ -36,7 +36,7 @@ function LanguageSelect() {
 				<Select
 					onValueChange={(value: LanguagesSupported) => setLanguage(value)}
 				>
-					<SelectTrigger className="w-[150px] text-black dark:text-white">
+					<SelectTrigger className="md:w-[150px] text-black dark:text-white">
 						<SelectValue
 							placeholder={LanguageSupportedMap[language]}
 							className=""

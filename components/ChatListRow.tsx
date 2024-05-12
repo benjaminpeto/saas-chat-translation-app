@@ -22,7 +22,7 @@ function ChatListRow({ chatId }: { chatId: string }) {
 	const row = (message?: Message) => (
 		<div
 			key={chatId}
-			className="flex p-5 items-center space-x-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700"
+			className="flex px-2 py-4 gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700"
 			onClick={() => router.push(`/chat/${chatId}`)}
 		>
 			<UserAvatar
@@ -48,7 +48,7 @@ function ChatListRow({ chatId }: { chatId: string }) {
 						? new Date(message.timestamp).toLocaleString()
 						: "No messages yet"}
 				</p>
-				<p>chat #{prettyUUID()}</p>
+				{/* <p>chat #{prettyUUID()}</p> */}
 			</div>
 		</div>
 	);
