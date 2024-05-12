@@ -55,7 +55,7 @@ function LanguageSelect() {
 								))}
 
 								{getNotSupportedLanguages(isPro).map((lang) => (
-									<Link href={"/register"} key={language} prefetch={false}>
+									<Link href={"/register"} key={lang} prefetch={false}>
 										<SelectItem
 											key={lang}
 											value={lang}

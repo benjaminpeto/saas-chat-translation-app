@@ -9,12 +9,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "./ui/dialog";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from "./ui/tooltip";
 import { Button } from "./ui/button";
 import { useSubscriptionStore } from "@/store/store";
 import { useToast } from "./ui/use-toast";
@@ -75,21 +69,25 @@ function DeleteChatButton({ chatId }: { chatId: string }) {
 		session?.user.id === adminId && (
 			<Dialog onOpenChange={setOpen} open={open}>
 				<DialogTrigger asChild>
-					<TooltipProvider delayDuration={250}>
+					{/* TODO Fix tooltip issue with button */}
+					{/* <TooltipProvider delayDuration={250}>
 						<Tooltip>
-							<TooltipTrigger>
-								<Button disabled={!isPro} variant="destructive">
-									<Trash className="h-4 w-4 mr-2" />
-									Delete Chat
-								</Button>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">
-								<p>
-									Only <strong>PRO</strong> users can delete chat
-								</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
+							<TooltipTrigger asChild> */}
+					<Button disabled={!isPro} variant="destructive">
+						<Trash className="h-4 w-4 mr-2" />
+						Delete Chat
+					</Button>
+					{/* </TooltipTrigger> */}
+					{/* {!isPro && (
+								<TooltipContent side="bottom">
+									<p>
+										Only <strong>PRO</strong> users can delete chat
+									</p>
+								</TooltipContent>
+							)} */}
+
+					{/* </Tooltip>
+					</TooltipProvider> */}
 				</DialogTrigger>
 
 				<DialogContent className="sm:max-w-md">
